@@ -1,0 +1,24 @@
+{
+  "sessions": [
+    {
+      "sessionId": "session_1234567890_abc123",
+      "userToken": "user_token_test_001",
+      "userId": "user@example.com",
+      "apiKey": "test-key-12345",
+      "startedAt": "2024-10-17T10:00:00Z",
+      "expiresAt": "2024-10-17T11:00:00Z",
+      "status": "active"
+    },
+    {
+      "sessionId": "session_1234567891_def456",
+      "userToken": "user_token_test_002",
+      "userId": "demo@example.com",
+      "apiKey": "demo-key-67890",
+      "startedAt": "2024-10-17T09:30:00Z",
+      "expiresAt": "2024-10-17T10:30:00Z",
+      "status": "completed"
+    }
+  ],
+  "sessionLifetime": 3600,
+  "maxSessionsPerUser": 10
+}

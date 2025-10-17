@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMBTI 인증 예제</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .info {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .api-key-example {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .api-key-example h4 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .api-key-example code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AIMBTI 인증 예제</h1>
+        <p>API 키를 사용한 인증 데모</p>
+    </div>
+
+    <div class="content">
+        <div class="info">
+            <h2>테스트용 API 키</h2>
+            <p>아래 API 키들을 사용해서 테스트할 수 있습니다:</p>
+
+            <div class="api-key-example">
+                <h4>✅ 유효한 키 (localhost용)</h4>
+                <code>test-key-12345</code>
+                <p>플랜: Free, 도메인: localhost</p>
+            </div>
+
+            <div class="api-key-example">
+                <h4>✅ 프리미엄 키 (example.com용)</h4>
+                <code>demo-key-67890</code>
+                <p>플랜: Premium, 도메인: example.com</p>
+            </div>
+
+            <div class="api-key-example">
+                <h4>✅ 개발자 키 (모든 도메인)</h4>
+                <code>dev-key-abcde</code>
+                <p>플랜: Unlimited, 도메인: * (모든 도메인 허용)</p>
+            </div>
+
+            <div class="api-key-example">
+                <h4>❌ 유효하지 않은 키</h4>
+                <code>invalid-key-xxxxx</code>
+                <p>인증 실패 메시지를 확인할 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3>사용 방법</h3>
+            <pre><code>&lt;script type="module">
+    import { AIMBTI } from './src/aimbti.js';
+
+    const app = new AIMBTI('container-id', {
+        apiKey: 'test-key-12345'
+    });
+    app.init();
+&lt;/script></code></pre>
+        </div>
+
+        <!-- AIMBTI 삽입 영역 -->
+        <div id="mbti-test"></div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 AIMBTI. API 인증 데모</p>
+    </div>
+
+    <!-- AIMBTI 초기화 -->
+    <script type="module">
+        import { AIMBTI } from './src/aimbti.js';
+
+        // AIMBTI 인스턴스 생성 및 초기화 (API 키 포함)
+        const app = new AIMBTI('mbti-test', {
+            apiKey: 'test-key-12345'  // 테스트용 API 키
+        });
+        app.init();
+    </script>
+</body>
+</html>

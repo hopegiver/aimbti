@@ -1,0 +1,39 @@
+{
+  "name": "aimbti",
+  "version": "1.0.0",
+  "description": "JavaScript만으로 어디서든 삽입 가능한 MBTI 성격 유형 테스트 서비스입니다.",
+  "type": "module",
+  "main": "dist/aimbti.esm.js",
+  "module": "dist/aimbti.esm.js",
+  "unpkg": "dist/aimbti.min.js",
+  "jsdelivr": "dist/aimbti.min.js",
+  "exports": {
+    ".": {
+      "import": "./dist/aimbti.esm.js",
+      "default": "./dist/aimbti.min.js"
+    }
+  },
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hopegiver/aimbti.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hopegiver/aimbti/issues"
+  },
+  "homepage": "https://github.com/hopegiver/aimbti#readme",
+  "devDependencies": {
+    "esbuild": "^0.25.11"
+  }
+}

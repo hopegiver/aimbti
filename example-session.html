@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMBTI 사용자 세션 예제</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .info {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .user-info {
+            background: #fff;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .user-info h4 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .result-log {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            min-height: 100px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .result-log div {
+            margin: 5px 0;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔐 AIMBTI 사용자 세션 예제</h1>
+        <p>회원별 결과 저장 데모</p>
+    </div>
+
+    <div class="content">
+        <div class="info">
+            <h2>현재 사용자 정보</h2>
+            <div class="user-info">
+                <h4>테스트 사용자</h4>
+                <p><strong>User ID:</strong> <code id="display-user-id">user@example.com</code></p>
+                <p><strong>User Token:</strong> <code id="display-user-token">user_token_test_001</code></p>
+                <p><strong>API Key:</strong> <code>test-key-12345</code></p>
+            </div>
+        </div>
+
+        <div class="info">
+            <h3>기능 설명</h3>
+            <ul>
+                <li>✅ 사용자별 고유 토큰으로 세션 관리</li>
+                <li>✅ 테스트 결과 자동 저장</li>
+                <li>✅ 완료 시 콜백 함수 실행</li>
+                <li>✅ 로컬스토리지에 히스토리 저장 (Mock)</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>코드 예제</h3>
+            <div class="code-block">const app = new AIMBTI('mbti-test', {
+    apiKey: 'test-key-12345',
+    userToken: 'user_token_test_001',
+    userId: 'user@example.com',
+    saveResults: true,
+    onComplete: (result) => {
+        console.log('테스트 완료:', result);
+    },
+    onSave: (saveData) => {
+        console.log('결과 저장 완료:', saveData);
+    }
+});
+app.init();</div>
+        </div>
+
+        <div class="info">
+            <h3>콘솔 로그</h3>
+            <div class="result-log" id="log-area">
+                <div>> 로그가 여기에 표시됩니다...</div>
+            </div>
+        </div>
+
+        <!-- AIMBTI 삽입 영역 -->
+        <div id="mbti-test"></div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 AIMBTI. 사용자 세션 데모</p>
+    </div>
+
+    <!-- AIMBTI 초기화 -->
+    <script type="module">
+        import { AIMBTI } from './src/aimbti.js';
+
+        // 로그 출력 함수
+        function addLog(message, type = 'info') {
+            const logArea = document.getElementById('log-area');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'success' ? '#00ff00' :
+                         type === 'error' ? '#ff0000' :
+                         type === 'warning' ? '#ffaa00' : '#00ff00';
+
+            const logDiv = document.createElement('div');
+            logDiv.style.color = color;
+            logDiv.textContent = `[${timestamp}] ${message}`;
+            logArea.appendChild(logDiv);
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+
+        // 사용자 정보 (실제로는 서버에서 받아옴)
+        const userId = 'user@example.com';
+        const userToken = 'user_token_test_001';
+
+        addLog('> 사용자 세션 초기화 중...', 'info');
+
+        // AIMBTI 인스턴스 생성 및 초기화
+        const app = new AIMBTI('mbti-test', {
+            apiKey: 'test-key-12345',
+            userToken: userToken,
+            userId: userId,
+            saveResults: true,
+            onComplete: (result) => {
+                addLog(`✓ 테스트 완료: ${result.type} - ${result.result.title}`, 'success');
+                addLog(`  답변: E=${result.answers.E}, I=${result.answers.I}, S=${result.answers.S}, N=${result.answers.N}, T=${result.answers.T}, F=${result.answers.F}, J=${result.answers.J}, P=${result.answers.P}`, 'info');
+            },
+            onSave: (saveData) => {
+                addLog(`✓ 결과 저장 완료: ${saveData.resultId}`, 'success');
+                addLog(`  저장 시간: ${saveData.savedAt}`, 'info');
+                addLog(`  공유 URL: ${saveData.shareUrl}`, 'info');
+            }
+        });
+
+        // 초기화
+        app.init().then(() => {
+            addLog('✓ AIMBTI 초기화 완료', 'success');
+        }).catch((error) => {
+            addLog(`✗ 초기화 실패: ${error.message}`, 'error');
+        });
+
+        // 콘솔 로그도 캡처
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (args[0] && typeof args[0] === 'string' && args[0].includes('✓')) {
+                addLog(args.join(' '), 'success');
+            }
+        };
+    </script>
+</body>
+</html>

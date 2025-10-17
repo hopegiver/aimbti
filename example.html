@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMBTI 삽입 예제</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .info {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>내 웹사이트</h1>
+        <p>AIMBTI를 내 웹사이트에 삽입한 예제입니다</p>
+    </div>
+
+    <div class="content">
+        <div class="info">
+            <h2>AIMBTI 테스트 소개</h2>
+            <p>
+                아래에서 MBTI 성격 유형 테스트를 바로 진행할 수 있습니다.
+                12개의 간단한 질문을 통해 당신의 성격 유형을 알아보세요!
+            </p>
+        </div>
+
+        <!-- AIMBTI 삽입 영역 -->
+        <div id="mbti-test"></div>
+
+        <div class="info" style="margin-top: 30px;">
+            <h3>사용 방법</h3>
+            <p>
+                이 테스트는 JavaScript 모듈만으로 구현되어 있어
+                어떤 웹사이트에든 쉽게 삽입할 수 있습니다.
+            </p>
+            <pre><code>&lt;div id="mbti-test">&lt;/div>
+
+&lt;script type="module">
+    import { AIMBTI } from './src/aimbti.js';
+
+    const app = new AIMBTI('mbti-test');
+    app.init();
+&lt;/script></code></pre>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 My Website. Powered by AIMBTI</p>
+    </div>
+
+    <!-- AIMBTI 초기화 -->
+    <script type="module">
+        import { AIMBTI } from './src/aimbti.js';
+
+        // AIMBTI 인스턴스 생성 및 초기화
+        const app = new AIMBTI('mbti-test');
+        app.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "results": [
+    {
+      "resultId": "result_1234567890_abc123",
+      "sessionId": "session_1234567890_abc123",
+      "userToken": "user_token_test_001",
+      "userId": "user@example.com",
+      "apiKey": "test-key-12345",
+      "mbtiType": "ENFP",
+      "result": {
+        "title": "스파크형",
+        "description": "열정적이고 창의적인 사람들입니다."
+      },
+      "answers": {
+        "E": 2,
+        "I": 1,
+        "S": 1,
+        "N": 2,
+        "T": 1,
+        "F": 2,
+        "J": 1,
+        "P": 2
+      },
+      "completedAt": "2024-10-17T10:15:00Z",
+      "savedAt": "2024-10-17T10:15:01Z",
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "shareUrl": "https://aimbti.com/result/result_1234567890_abc123"
+    },
+    {
+      "resultId": "result_1234567891_def456",
+      "sessionId": "session_1234567891_def456",
+      "userToken": "user_token_test_001",
+      "userId": "user@example.com",
+      "apiKey": "test-key-12345",
+      "mbtiType": "INTJ",
+      "result": {
+        "title": "과학자형",
+        "description": "전략적이고 논리적인 사고를 하는 사람들입니다."
+      },
+      "answers": {
+        "E": 1,
+        "I": 2,
+        "S": 1,
+        "N": 2,
+        "T": 2,
+        "F": 1,
+        "J": 2,
+        "P": 1
+      },
+      "completedAt": "2024-10-16T15:30:00Z",
+      "savedAt": "2024-10-16T15:30:01Z",
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      "shareUrl": "https://aimbti.com/result/result_1234567891_def456"
+    },
+    {
+      "resultId": "result_1234567892_ghi789",
+      "sessionId": "session_1234567892_ghi789",
+      "userToken": "user_token_test_002",
+      "userId": "demo@example.com",
+      "apiKey": "demo-key-67890",
+      "mbtiType": "ESFJ",
+      "result": {
+        "title": "친선도모형",
+        "description": "따뜻하고 협력적인 사람들입니다."
+      },
+      "answers": {
+        "E": 2,
+        "I": 1,
+        "S": 2,
+        "N": 1,
+        "T": 1,
+        "F": 2,
+        "J": 2,
+        "P": 1
+      },
+      "completedAt": "2024-10-15T12:00:00Z",
+      "savedAt": "2024-10-15T12:00:01Z",
+      "ipAddress": "192.168.1.100",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+      "shareUrl": "https://aimbti.com/result/result_1234567892_ghi789"
+    }
+  ],
+  "stats": {
+    "totalResults": 3,
+    "typeDistribution": {
+      "ENFP": 1,
+      "INTJ": 1,
+      "ESFJ": 1
+    }
+  }
+}
